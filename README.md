@@ -1,4 +1,4 @@
-# PostgreSQL and PGAdmin
+# PostgreSQL and PGAdmin - Docker Template
 
 ## Requirments
 `.env` file with following parameters -
