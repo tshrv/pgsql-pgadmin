@@ -1,0 +1,25 @@
+version: "3.3"
+
+services:
+  psqldb:
+    container_name: ${PGSQLDB_CONTAINER_NAME}
+    image: postgres:15
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${PGSQLDB_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${PGSQLDB_POSTGRES_PASSWORD}
+      # POSTGRES_DB: ${PGSQLDB_POSTGRES_DB}
+    volumes:
+      - ${PGSQLDB_DATA_DIR}:/data
+  
+  pgadmin:
+    container_name: ${PGADMIN_CONTAINER_NAME}
+    image: dpage/pgadmin4:6.15
+    restart: always
+    ports:
+      - "${PGADMIN_PORT}:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
